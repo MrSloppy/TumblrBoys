@@ -14,5 +14,12 @@ While ($browser.Busy) {
 
 $browser.Document | Get-Member
 
-$browser.Document.getElementsByTagName("img") | Select-Object -ExpandProperty src
+$folder = "C:\Users\Public\Pictures\webimages\"
 
+$images = $browser.Document.getElementsByTagName("img") | Select-Object -ExpandProperty src
+
+echo $images
+
+foreach( $image in $images){
+    Start-BitsTransfer -Source $image -Destination C:\webimages
+}
