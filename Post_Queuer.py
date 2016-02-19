@@ -17,3 +17,6 @@ client = pytumblr.TumblrRestClient(
 # Make the request
 print(client.info())
 print(client.blog_info("classiccadillacs"))
+
+
+client.create_photo('classiccadillacs', state="queue", tags=["Classic Car", "Cadillac"], data="/Users/johnb/path/to/my/image.jpg")

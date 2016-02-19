@@ -1,25 +1,14 @@
-﻿# Deze imports zijn nodig:
+﻿function Get-WebPageImages($url, $folder) {
 Import-Module BitsTransfer
-
-
-$browser = New-Object -ComObject InternetExplorer.Application
-$browser.visible = $true
-# Zorg ervoor dat je bent ingelogd op Facebook via Internet Explorer en dat hij de credentials onthoud!!!!
-$browser.Navigate("https://www.facebook.com/jos.heemels/media_set?set=a.3674561308949.2135949.1422421937&type=3&__mref=message_bubble")
-
-While ($browser.Busy) { 
-    Start-Sleep -Milliseconds 800 
-}
-"Done!"
-
-$browser.Document | Get-Member
-
-$folder = "C:\Users\Public\Pictures\webimages\"
-
-$images = $browser.Document.getElementsByTagName("img") | Select-Object -ExpandProperty src
-
-echo $images
-
-foreach( $image in $images){
-    Start-BitsTransfer -Source $image -Destination C:\webimages
+if (-not (Test-Path $folder)) { md $folder }
+$ie = New-Object -COMObject InternetExplorer.Application
+$ie.Navigate($url)
+while ($ie.Busy) { Start-Sleep -Milliseconds 400 }
+$sources = $ie.document.getElementsByTagName('img') | Select-Object -ExpandProperty src
+$destinations = $sources | ForEach-Object { "$folder\" }
+$displayname = $url.Split('/')[-1]
+$ie.Quit()
+foreach($image in $sources){
+    Start-BitsTransfer $image $folder -Prio High
+    }
 }
