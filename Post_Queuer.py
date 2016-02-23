@@ -1,6 +1,7 @@
 __author__ = 'Timo'
 
 import pytumblr
+import glob
 
 # https://github.com/tumblr/pytumblr        GOOD SHIT RIGHT THERE
 
@@ -17,6 +18,9 @@ client = pytumblr.TumblrRestClient(
 # Make the request
 print(client.info())
 print(client.blog_info("classiccadillacs"))
+print(client.blog_info("thickhentaimilfs"))
 
-
-client.create_photo('classiccadillacs', state="queue", tags=["Classic Car", "Cadillac"], data="/Users/johnb/path/to/my/image.jpg")
+print(glob.glob("C:\webimages/4chan/e/1808637/*"))
+images = glob.glob("C:\webimages/4chan/e/1808637/*")
+for i in range(0, len(images)):
+    client.create_photo('thickhentaimilfs', state="queue", tags=["thick", "hentai", "milf", "hentai-milf"], data=images[i])
