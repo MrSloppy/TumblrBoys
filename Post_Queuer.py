@@ -18,9 +18,8 @@ client = pytumblr.TumblrRestClient(
 # Make the request
 print(client.info())
 print(client.blog_info("classiccadillacs"))
-print(client.blog_info("thickhentaimilfs"))
 
-print(glob.glob("C:\webimages/4chan/e/1808637/*"))
-images = glob.glob("C:\webimages/4chan/e/1808637/*")
+print(glob.glob("C:\webimages/DOEL/*"))
+images = glob.glob("C:\webimages/DOEL/*")
 for i in range(0, len(images)):
-    client.create_photo('thickhentaimilfs', state="queue", tags=["thick", "hentai", "milf", "hentai-milf"], data=images[i])
+    client.create_photo('naamblog', state="queue", tags=["tag1", "tag2", "etc", "etc"], data=images[i])
