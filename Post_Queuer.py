@@ -5,18 +5,14 @@ import glob
 
 # https://github.com/tumblr/pytumblr        GOOD SHIT RIGHT THERE
 
-consumer_key = input("What is your consumer key?")
-consumer_secret = input("What is your consumer secret?")
-OAUTH_token = input("What is your OAUTH token?")
-OAUTH_secret = input("What is your OATH secret?")
 
 # Authenticate via OAuth
 client = pytumblr.TumblrRestClient(
     #I know....
-    consumer_key,           # Consumer Key
-    consumer_secret,        # Consumer Secret
-    OAUTH_token,            # OAUTH token
-    OAUTH_secret            # OAUTH Secret
+    'XjZYePrr0GIg6yf9RCnaLl4EGswwMAdQn4GLufxDx9ccS9wjv6',
+    '3msUdYmztwXP7eSf0FJ7XKvRiqwWtBE5SvtOLQe97laqQNo7AK',
+    'ovtLFGpkNjASKc9eE4A6bT1SF7shUdxIoJLN8Tu1t9m90JxyAu',
+    'zVCf3HQ4CTD214ntxM4hcR36OAg8QnU2lTlG2mdvTlJgKXH8XF'
 )
 
 # Make the request
